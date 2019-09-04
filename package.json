@@ -1,0 +1,33 @@
+{
+  "name": "Skills-Fed",
+  "version": "1.0.0",
+  "description": "when You clone Repo\r 1- go to your terminal in correct file\r 2-npm install\r 3-npm start",
+  "main": "App.js",
+  "scripts": {
+    "start": "npm run server",
+    "server": "parcel index.html -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeriesZamel/Skills-Fed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeriesZamel/Skills-Fed/issues"
+  },
+  "homepage": "https://github.com/JeriesZamel/Skills-Fed#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "parcel-plugin-asset-copier": "^1.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }, 
+  "assetsPath": "assets"
+}
