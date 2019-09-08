@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import Header from "./Header"
 class App extends React.Component {
 constructor() {
     super();
@@ -21,7 +21,7 @@ constructor() {
     return this.state.isLoading ? (
       <img src="simpson.gif"></img>
     ) : (
-     <h1>Head</h1>
+     <Header />
     );
   }
 }
