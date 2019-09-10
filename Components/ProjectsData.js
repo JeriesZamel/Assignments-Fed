@@ -49,20 +49,40 @@ export default class AssignHistory extends React.Component {
               return (
                 <div className="card">
                   <div className="card-header" id="headingOne0">
-                    <h2 className="mb-0">
-                      <button
-                        className="btn btn-link"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target={`#${project.id}`}
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                      >
-                        <span>Name: {project.name}</span>
-                        <br></br>
-                        <span>ID: {project.id}</span>
-                      </button>
-                    </h2>
+                    <div className="row">
+                      <div className="col">
+                        <button
+                          className="btn btn-outline-info"
+                          type="button"
+                          data-toggle="collapse"
+                          data-target={`#${project.id}`}
+                          aria-expanded="true"
+                          aria-controls="collapseOne"
+                        >
+                          Info
+                        </button>
+                      </div>
+                      <div className="col">
+                        <h3>Name: {project.name}</h3>
+                      </div>
+                      <div className="col">
+                        {" "}
+                        <h3>ID: {project.id}</h3>
+                      </div>
+                      <div className="col">
+                        {" "}
+                        <button
+                          className="btn btn-outline-success"
+                          style={{ marginLeft: "5px" }}
+                          type="button"
+                        >
+                          <Link to={"./Team-Table"} style={{ color: "black" }}>
+                            Assign
+                          </Link>
+                        </button>
+                      </div>
+                    </div>
+
                     {/* ends card-header div */}
                   </div>
                   <div
@@ -137,11 +157,14 @@ export default class AssignHistory extends React.Component {
                                 {EmpList.map(Emp => {
                                   return (
                                     <button
-                                      className="btn btn btn-warning"
-                                      style={{ marginLeft: "2px" }}
+                                      className="btn btn-outline-secondary"
+                                      style={{ marginLeft: "5px" }}
                                       type="button"
                                     >
-                                      <Link to={`Assign-History/${Emp.id}`}>
+                                      <Link
+                                        to={`Assign-History/${Emp.id}`}
+                                        style={{ color: "black" }}
+                                      >
                                         {Emp.name}
                                       </Link>
                                     </button>

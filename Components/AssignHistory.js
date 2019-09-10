@@ -22,8 +22,21 @@ export default class AssignHisToryTable extends React.Component {
   render() {
     return (
       <div className="col justify-content-md-center">
-        <h1 style={{ marginLeft: "500px" }}>History Table For Emp {this.state.myMatch.id} </h1>
-        <button className="btn btn-outline-info"><Link to="/Projects">Back</Link></button>
+         <div className="row"  style={{ width: "300x" }}>
+           <div className="col md-3"></div>
+            
+            <div className="col md-6"><div class="card" >
+              <div class="card-header">Assignments History  </div>
+              <div class="card-body">
+                <h5 class="card-title">Walla Mother of All Children</h5>
+                <button className="btn btn-outline-info"><Link to="/Projects">Back</Link></button>
+                <button className="btn btn-outline-info ml-3">Profile Details</button>
+              </div>
+            </div></div>
+            <div className="col md-3"></div>
+          </div>
+        {/* <h1 style={{ marginLeft: "500px" }}>History Table For Emp {this.state.myMatch.id} </h1> */}
+        
         <table
           className="table"
           style={{
