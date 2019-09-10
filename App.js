@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./Header"
+import AppRouter from "./routers/Router";
+import Loading from "./Loading";
 class App extends React.Component {
-constructor() {
+  constructor() {
     super();
     this.state = {
-      isLoading: true,
+      isLoading: true
     };
   }
   componentDidMount() {
@@ -16,13 +17,8 @@ constructor() {
     }, 1000);
   }
 
- 
   render() {
-    return this.state.isLoading ? (
-      <img src="simpson.gif"></img>
-    ) : (
-     <Header />
-    );
+    return this.state.isLoading ? <Loading /> : <AppRouter />;
   }
 }
 
