@@ -1,0 +1,222 @@
+body {
+  font-family: "Lato", sans-serif;
+  margin:0;
+  padding:0;
+  height:100%;
+}
+.sidenav {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #E8E8E8;
+  overflow-x: hidden;
+  transition: 0.5s;
+  position: relative;
+  border-right:solid 1px;
+  border-bottom:solid 1px;
+
+  border-color: grey;
+}
+.sidenav img{
+  margin-top:50px;
+  margin-bottom: 20px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+  transition: 0.2s;
+  
+
+}
+#menubtn{
+  margin-left: 5px
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+div nav form i{
+   padding: 10px;
+   margin: 10px;
+}
+div nav form button{
+    width: 100px;
+ }
+
+ #logo{
+     float: left;
+     padding: 10px;
+ }
+
+ #userName{
+    margin-right: 10px;
+    font-size: 14px; 
+ }
+
+ #footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color:#E8E8E8	;
+        color:black;
+        border-bottom-color: grey;
+        border-top: solid 1px;
+        height: 6.9%;
+
+ }
+ #body {
+    padding-bottom:60px;   /* Height of the footer */
+ }
+ #footerLogo {
+    display:inline-block;
+    padding: 10px;
+    width:100px;
+} 
+#footerText {
+    display:inline-block;
+    margin-left: 33%;
+    width:400px; 
+    font-size: 12px;
+}
+#footerC{
+    display:inline-block;
+    margin-left: 28%;
+    font-size: 12px;
+}
+.fa-user-circle{
+    padding: 10px;
+}
+a.navelem{
+ font-size: 14px;
+}
+.divheader{
+  height: 6%;
+  border-bottom: solid 1px;
+  border-bottom-color: gray;
+  background-color:#E8E8E8	;
+  width: 100%;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end ;
+
+  }
+#prodTecSkillGraph{
+  height: 250px; 
+  min-height: 250px;
+  min-width: 300px;
+  width: 50%;
+  margin: 0 auto;
+}
+#tables-containter{
+  padding-top: 20px;
+}
+#connectedServices{
+  width:40%;
+  margin:10px;
+}
+table{
+  font-size: 12px;
+}
+
+.center {
+  margin-top:50px;   
+}
+
+.modal-header {
+padding-bottom: 5px;
+margin:auto;
+
+}
+
+.modal-footer {
+    padding: 0;
+}
+  
+.modal-footer .btn-group button {
+height:40px;
+border-top-left-radius : 0;
+border-top-right-radius : 0;
+}
+
+.modal-footer .btn-group:last-child > button {
+border-right: 0;
+}
+.modal-skill-input{
+  display: flex;
+  margin: auto;  
+}
+.modal-footer-buttons{
+  margin-bottom: 10px;
+}
+
+.footer-button{
+  width: 90px;
+  margin-left: 10%;
+  margin-bottom: 2%;
+}
+.btn-group-justified{
+  margin: auto;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+    margin: auto;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+#dropdownMenuButton{
+  min-width: 156px;
+}
+
