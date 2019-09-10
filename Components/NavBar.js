@@ -55,8 +55,7 @@ export default class Header extends React.Component {
             />
             <Link to="/" onClick={this.closeNav}>Home</Link>
             <Link to="/Projects" onClick={this.closeNav}>Projects History</Link>
-            <Link to="/" onClick={this.closeNav}>Assign To Project</Link>
-            <Link to="/" onClick={this.closeNav}>Creat Project</Link>
+            <Link to="/Add-Project" onClick={this.closeNav}>Creat Project</Link>
 
             {/* <Route path="/add-project" component={AddProject} /> */}
           </div>
