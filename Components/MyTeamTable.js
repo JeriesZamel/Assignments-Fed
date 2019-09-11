@@ -121,15 +121,8 @@ export default class MyTeamTable extends React.Component {
                     >
                       Assign
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      Assign2
-                    </button>
-
+                    
+                    
                     <div
                       className="modal fade"
                       id="exampleModal"
