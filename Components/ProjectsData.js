@@ -63,7 +63,7 @@ export default class AssignHistory extends React.Component {
                         </button>
                       </div>
                       <div className="col">
-                        <h3>Name: {project.name}</h3>
+                        <h3> {project.name}</h3>
                       </div>
                       <div className="col">
                         {" "}
@@ -182,89 +182,38 @@ export default class AssignHistory extends React.Component {
             })}
           </div>
         </div>
+        <footer aria-label="Page navigation example" style={{marginTop:"50px"}}>
+          <ul className="pagination justify-content-center">
+            <li className="page-item disabled">
+              <a className="page-link" href="#" tabindex="-1" aria-disabled="true">
+                Previous
+              </a>
+            </li>
+            <li className="page-item active" aria-current="page">
+              <span className="page-link">
+                1<span className="sr-only">(current)</span>
+              </span>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                2
+              </a>
+            </li>
+
+            <li className="page-item">
+              <a className="page-link" href="#">
+                3
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                Next
+              </a>
+            </li>
+          </ul>
+        </footer>
+        <div style={{ height: "90px" }}></div>
       </>
     );
   }
-}
-
-{
-  /* <table
-            id="assignment-history"
-            className="table table-hover"
-            style={{
-              width: "70%",
-              marginLeft: "200px",
-              marginTop: "20px",
-              border: "1px solid black"
-            }}
-          >
-            <thead className="thead-dark">
-              <tr style={{ textAlign: "center", fontSize: "18px" }}>
-                <th scope="col"> ID</th>
-                <th scope="col"> Name</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">RequiredSkills</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.projectsData.map(project => {
-                return (
-                  <tr
-                    key={project.id}
-                    style={{ textAlign: "center", fontSize: "16px" }}
-                  >
-                    <td>{project.id}</td>
-                    <td>{project.name}</td>
-                    <td>{project.startDate}</td>
-
-                    <td>
-                      {project.technicalSkills.map((skill, index) => {
-                        return (
-                          <span className="badge badge-info mr-1" key={index}>
-                            {skill.name}{" "}
-                            <span
-                              className="badge badge-light"
-                              style={{
-                                fontSize: skill.level > 3 ? "1em" : ""
-                              }}
-                            >
-                              {skill.level}
-                            </span>
-                          </span>
-                        );
-                      })}
-                      {project.productSkills.map((skill, index) => {
-                        return (
-                          <span
-                            className="badge badge-secondary mr-1"
-                            key={index}
-                          >
-                            {skill.name}{" "}
-                            <span
-                              className="badge badge-light"
-                              style={{
-                                fontSize: skill.level > 3 ? "1em" : ""
-                              }}
-                            >
-                              {skill.level}
-                            </span>
-                          </span>
-                        );
-                      })}
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-success "
-                        style={{ width: "100px" }}
-                      >
-                        <small>More Info</small>
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table> */
 }

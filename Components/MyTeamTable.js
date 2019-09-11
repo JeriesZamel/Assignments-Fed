@@ -1,128 +1,183 @@
 import React from "react";
-import { EmpListProject1 } from "../data/Emp";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
-import {  Link } from "react-router-dom";
+
+import { getEmployeeForAssignments } from "./api";
+import { Link } from "react-router-dom";
+import SkillBadge from "./SkillBadge";
+
 export default class MyTeamTable extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true,
-      Employees: []
+      employees: []
     };
+
+    this.assign = this.assign.bind(this);
   }
+
   componentDidMount() {
-    this.state.Employees = EmpListProject1;
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
-      });
-    }, 500);
-    console.log(this.state.Employees);
+    //Ya'ani call to the server for data
+    const employees = getEmployeeForAssignments();
+    this.setState({ employees });
   }
+
+  assign(empId) {
+    console.log(empId);
+  }
+
   render() {
     return (
       <>
-        <div className="col justify-content-md-center">
-          <div className="row"  style={{ width: "300x" }}>
-           <div className="col md-3"></div>
-            
-            <div className="col md-6"><div class="card" >
-              <div class="card-header">Employees For Team Leader </div>
-              <div class="card-body">
-                <h5 class="card-title">Ranem Daheer</h5>
-                <p class="card-text">Project : VodaPhone</p>
-                <p class="card-text">ID : "12332"</p>
+        <div className="row" style={{ width: "300x" }}>
+          <div className="col md-3"></div>
 
-                <button className="btn btn-outline-info"><Link to="/Projects">Back</Link></button>
+          <div className="col md-6">
+            <div className="card">
+              <div className="card-header">Employees For Team Leader </div>
+              <div className="card-body">
+                <h5 className="card-title">Ranem Daheer</h5>
+                <p className="card-text">Project : VodaPhone</p>
+                <p className="card-text">ID : "12332"</p>
+
+                <button className="btn btn-outline-info">
+                  <Link to="/Projects">Back</Link>
+                </button>
               </div>
-            </div></div>
-            <div className="col md-3"></div>
+            </div>
           </div>
-          <table
-            className="table"
-            style={{
-              width: "70%",
-              marginLeft: "200px",
-              marginTop: "20px",
-              border: "1px solid black",
-              textAlign: "center"
-            }}
-          >
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">ID</th>
-                <th scope="col">Skills</th>
-                <th scope="col">Assign</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.Employees.map((Assign, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{i}</td>
-                    <td>
-                      {" "}
-                      <FontAwesomeIcon
-                        style={{ cursor: "pointer" }}
-                        title="ahalan"
-                        size="2x"
-                        icon={faUsers}
-                      ></FontAwesomeIcon>
-                    </td>
-                    <td>{Assign.name}</td>
-                    <td>{Assign.id}</td>
-                    <td>
-                      {Assign.technicalSkills.map((skill, index) => {
-                        return (
-                          <span className="badge badge-info mr-1" key={index}>
-                            {skill.name}{" "}
-                            <span
-                              className="badge badge-light"
-                              style={{
-                                fontSize: skill.level > 3 ? "1em" : ""
-                              }}
-                            ></span>
-                          </span>
-                        );
-                      })}
-
-                      {Assign.productSkills.map((skill, index) => {
-                        return (
-                          <span
-                            className="badge badge-primary mr-1"
-                            key={index}
-                          >
-                            {skill.name}{" "}
-                            <span
-                              className="badge badge-light"
-                              style={{
-                                fontSize: skill.level > 3 ? "1em" : ""
-                              }}
-                            ></span>
-                          </span>
-                        );
-                      })}
-                    </td>
-                    <td>
-                      {" "}
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block"
-                      >
-                        Assign
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="col md-3"></div>
         </div>
-        <div style={{ height: "250px" }}></div>
+        <div className="d-flex justify-content-center align-items-center mb-2 mt-3">
+          <input
+            className="form-control mr-sm-2 w-25 "
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          ></input>
+          <button
+            className="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+          >
+            Search
+          </button>
+        </div>
+        <table
+          className="table"
+          style={{
+            width: "70%",
+            marginLeft: "200px",
+            marginTop: "20px",
+            border: "1px solid black",
+            textAlign: "center"
+          }}
+        >
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">ID</th>
+              <th scope="col">Technical Skills</th>
+              <th scope="col">Product Skills</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.employees.map(employee => {
+              return (
+                <tr key={employee.id}>
+                  <td>
+                    <img src={employee.img} style={{ width: "50px" }}></img>
+                    <a href="#">{employee.name}</a>
+                  </td>
+                  <td>{employee.id}</td>
+                  <td>
+                    {employee.technicalSkills.map((skill, index) => {
+                      return (
+                        <SkillBadge
+                          key={index}
+                          name={skill.name}
+                          level={skill.level}
+                          type={"Tech"}
+                        />
+                      );
+                    })}
+                  </td>
+                  <td>
+                    {employee.productSkills.map((skill, index) => {
+                      return (
+                        <SkillBadge
+                          key={index}
+                          name={skill.name}
+                          level={skill.level}
+                          type={"Prod"}
+                        />
+                      );
+                    })}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                    >
+                      Assign
+                    </button>
+
+                    <div
+                      className="modal fade"
+                      id="exampleModal"
+                      tabindex="-1"
+                      role="dialog"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">
+                              Successfully Assigned
+                            </h5>
+                            <button
+                              type="button"
+                              className="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div className="modal-body">
+                            Employee {employee.name} Added To Project VodaPhone
+                          </div>{" "}
+                          <div class="modal-footer mb-3 justify-content-center ">
+                            <button
+                              type="button"
+                              className="btn btn-secondary"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-primary ml-3"
+                              data-dismiss="modal"
+                            >
+                              Save changes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* <input
+                      type="button"
+                      value="Assign"
+                      onClick={e => this.assign(employee.id)}
+                    ></input> */}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </>
     );
   }
