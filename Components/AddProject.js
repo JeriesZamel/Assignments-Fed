@@ -156,7 +156,7 @@ export default class AddProject extends React.Component {
     return (
       <>
         <div className="alert alert-info col-10 " style={{marginLeft:"100px"}} role="alert">
-          <h4 className="alert-heading text-center bg-secondary ">
+          <h4 className="alert-heading text-center  ">
             Add Project
           </h4>
 
@@ -225,10 +225,10 @@ export default class AddProject extends React.Component {
                     type="date"
                     className="form-control"
                     placeholder="/ / "
-                    aria-label="StartDate"
+                    aria-label="date"
                     aria-describedby="basic-addon1"
                     id="dateID"
-                    name="startdate"
+                    name="date"
                     defaultValue={this.state.date.value}
                     onBlur={this.inputChange}
                   ></input>
