@@ -330,6 +330,9 @@ export default class AddProject extends React.Component {
                 <button type="submit" className="btn btn-info btn-block">
                   Submit
                 </button>
+                <button type="submit" className="btn btn-info btn-block">
+                  Submit
+                </button>
               </div>
             </div>
           </form>
