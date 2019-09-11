@@ -113,13 +113,21 @@ export default class MyTeamTable extends React.Component {
                     })}
                   </td>
                   <td>
-                    <button
+                  <button
                       type="button"
                       className="btn btn-primary"
                       data-toggle="modal"
                       data-target="#exampleModal"
                     >
                       Assign
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                    >
+                      Assign2
                     </button>
 
                     <div
