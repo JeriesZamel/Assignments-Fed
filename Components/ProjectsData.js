@@ -12,17 +12,31 @@ export default class AssignHistory extends React.Component {
       projectsData: [],
       projectByID: []
     };
+    this.setProjectInSession=this.setProjectInSession.bind(this);
   }
   componentDidMount() {
     //Ya'ani call to the server for data
     // const employees = getEmployeeForAssignments();
-    this.state.projectsData = Projects;
+   // this.state.projectsData = Projects;
     this.state.projectByID = [EmpListProject1, EmpListProject2];
     setTimeout(() => {
       this.setState({
         // isLoading: false
       });
     }, 100);
+
+    fetch('http://localhost:8080/api/projects/1')
+    .then(response => response.json())
+    .then(projects => {
+      this.setState({
+        projectsData:projects
+      })
+    });
+  }
+  
+  setProjectInSession(project){
+    sessionStorage.clear();
+    sessionStorage.setItem('Project', JSON.stringify(project));
   }
 
   render() {
@@ -71,15 +85,11 @@ export default class AssignHistory extends React.Component {
                       </div>
                       <div className="col">
                         {" "}
-                        <button
-                          className="btn btn-outline-success"
-                          style={{ marginLeft: "5px" }}
-                          type="button"
-                        >
-                          <Link to={"./Team-Table"} style={{ color: "black" }}>
-                            Assign
+                        
+                          <Link to={"./Team-Table"} className="btn btn-outline-success"
+                              onClick={e => this.setProjectInSession(project)}>
+                            Assign                            
                           </Link>
-                        </button>
                       </div>
                     </div>
 
@@ -97,7 +107,7 @@ export default class AssignHistory extends React.Component {
                           <h6 style={{ fontWeight: "bold" }}>
                             Required Technical Skills{" "}
                           </h6>
-                          {project.technicalSkills.map((skill, index) => {
+                          {project.technicalSkill.map((skill, index) => {
                             return (
                               <span
                                 className="badge badge-info mr-1"
@@ -120,7 +130,7 @@ export default class AssignHistory extends React.Component {
                           <h6 style={{ fontWeight: "bold" }}>
                             Required Product Skills{" "}
                           </h6>
-                          {project.productSkills.map((skill, index) => {
+                          {project.productSkill.map((skill, index) => {
                             return (
                               <span
                                 className="badge badge-secondary mr-1"
@@ -146,6 +156,7 @@ export default class AssignHistory extends React.Component {
                         <div className="col">
                           <h6 style={{ fontWeight: "bold" }}>Description</h6>
                           {project.description}
+                          
                         </div>
                       </div>
                       <div className="row">
@@ -156,18 +167,15 @@ export default class AssignHistory extends React.Component {
                               <>
                                 {EmpList.map(Emp => {
                                   return (
-                                    <button
-                                      className="btn btn-outline-secondary"
-                                      style={{ marginLeft: "5px" }}
-                                      type="button"
-                                    >
+                                  
                                       <Link
                                         to={`Assign-History/${Emp.id}`}
-                                        style={{ color: "black" }}
+                                        className="btn btn-outline-secondary"
+                                        style={{ marginLeft: "5px" }}
                                       >
                                         {Emp.name}
                                       </Link>
-                                    </button>
+                                   
                                   );
                                 })}
                               </>
