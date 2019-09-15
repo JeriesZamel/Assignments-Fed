@@ -8,7 +8,8 @@ export default class MyTeamTable extends React.Component {
   constructor() {
     super();
     this.state = {
-      employees: []
+      employees: [],
+      project:[]
     };
 
     this.assign = this.assign.bind(this);
@@ -17,7 +18,10 @@ export default class MyTeamTable extends React.Component {
   componentDidMount() {
     //Ya'ani call to the server for data
     const employees = getEmployeeForAssignments();
-    this.setState({ employees });
+    this.setState({ employees:employees});
+    this.setState({project:JSON.parse(sessionStorage.getItem('Project'))}, ()=> console.log(this.state.project));
+   
+    
   }
 
   assign(empId) {
@@ -34,13 +38,13 @@ export default class MyTeamTable extends React.Component {
             <div className="card">
               <div className="card-header">Employees For Team Leader </div>
               <div className="card-body">
-                <h5 className="card-title">Ranem Daheer</h5>
-                <p className="card-text">Project : VodaPhone</p>
-                <p className="card-text">ID : "12332"</p>
+                <h4 className="card-title">Project : {this.state.project.name}</h4>
+               
+                <p className="card-text">ID : {this.state.project.id}</p>
 
-                <button className="btn btn-outline-info">
-                  <Link to="/Projects">Back</Link>
-                </button>
+                
+                  <Link to="/Projects" className="btn btn-outline-info">Back</Link>
+                
               </div>
             </div>
           </div>

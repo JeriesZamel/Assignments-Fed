@@ -29,7 +29,7 @@ export default class AssignHisToryTable extends React.Component {
               <div class="card-header">Assignments History  </div>
               <div class="card-body">
                 <h5 class="card-title">Walla Mother of All Children</h5>
-                <button className="btn btn-outline-info"><Link to="/Projects">Back</Link></button>
+               <Link to="/Projects" className="btn btn-outline-info">Back</Link>
                 <button className="btn btn-outline-info ml-3">Profile Details</button>
               </div>
             </div></div>
